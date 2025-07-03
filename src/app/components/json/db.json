@@ -1,0 +1,20 @@
+{
+  "students": [
+    {
+      "id": "a43d",
+      "name": "Raghul",
+      "address": "Palikaranai"
+    },
+    {
+      "id": "3ae1",
+      "name": "Raghavan",
+      "address": "Thiruvallur"
+    },
+    {
+      "id": "2516",
+      "name": "Sundhar",
+      "address": "Thiruvanamalai"
+    }
+    
+  ]
+}

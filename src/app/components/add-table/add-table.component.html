@@ -1,0 +1,96 @@
+<div class="container mt-4 w-50  border p-3 rounded shadow fst-italic">
+  <h1 class="d-flex justify-content-center text-dark">FILL THE FORM DETAILS</h1>
+  <form (ngSubmit)="savedata()" [formGroup]="formData" class="form " >
+    <div class="mb-3">
+      <input
+        type="text"
+        placeholder="Type name..."
+        formControlName="name" p-3 
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        placeholder="Type address..."
+        formControlName="address"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" [disabled]="!formData.valid" class="btn btn-success w-100">
+      Save
+    </button>
+  </form>
+</div>
+
+<div class="d-flex justify-content-center mt-1 p-0 mb-0">
+<div class="alert alert-success alert-dismissible fade show w-50 m-0"  role="alert" *ngIf="successAlert">
+  <strong>Success!</strong> Your data has been saved.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-1 p-0 mb-0">
+<div class="alert alert-success alert-dismissible fade show w-50 m-0"  role="alert" *ngIf="updateAlert">
+  <strong>Success!</strong> Your data has been Updated.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-1 p-0 mb-0">
+<div class="alert alert-danger alert-dismissible fade show w-50 m-0"  role="alert" *ngIf="deleteAlert">
+  <strong>Deleted!</strong> Your data has been removed.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+</div>
+
+
+
+<div class="d-flex justify-content-center  ">
+  <table
+    class="table table-bordered table-striped table-hover align-middle text-center mt-4 w-50 justify-item-center table-rounded shadow"
+  >
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData$ | async">
+        <td>{{ user.name }}</td>
+        <td>{{ user.address }}</td>
+        <td class="d-flex justify-content-center p-0 m-0">
+          <div class="dropdown text-end">
+            <button
+              class="btn btn-light"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li
+                class="dropdown-item"
+                style="cursor: pointer !important"
+                (click)="Edit(user)"
+              >
+                Edit
+              </li>
+              <li
+                class="dropdown-item"
+                style="cursor: pointer !important"
+                (click)="Delete(user)"
+              >
+                Delete
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
